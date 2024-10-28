@@ -1,0 +1,50 @@
+@startuml
+class 三层CS.Contact {
+- int id
+- String name
+- String address
+- String phone
++ int getId()
++ void setId(int)
++ String getName()
++ void setName(String)
++ String getAddress()
++ void setAddress(String)
++ String getPhone()
++ void setPhone(String)
++ String toString()
+}
+
+
+class 三层CS.ContactManager {
+- {static} String URL
+- {static} String USER
+- {static} String PASSWORD
++ boolean addContact(String,String,String)
++ boolean updateContact(int,String,String,String)
++ boolean deleteContact(int)
++ Contact getContact(int)
++ ResultSet getAllContacts()
+}
+
+
+class 三层CS.ContactApp {
+- JFrame frame
+- JTextField nameField
+- JTextField addressField
+- JTextField phoneField
+- JTextField idField
+- JTextArea contactsArea
+- ContactManager manager
+- void initializeUI()
+- void loadContacts()
+- void addContact()
+- void updateContact()
+- void deleteContact()
+- void getContact()
+- void clearFields()
++ {static} void main(String[])
+}
+
+
+@enduml
