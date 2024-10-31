@@ -1,0 +1,43 @@
+@startuml
+
+package com.example.contacts {
+
+class Contact {
+    - id : int
+    - name : String
+    - address : String
+    - phone : String
+}
+
+class ContactRepository {
+    +findAll() : List<Contact>
+    +findById(id : int) : Optional<Contact>
+    +save(contact : Contact) : Contact
+    +deleteById(id : int)
+}
+
+class ContactService {
+    -contactRepository : ContactRepository
+    +getAllContacts() : List<Contact>
+    +getContactById(id : int) : Contact
+    +addContact(contact : Contact) : Contact
+    +updateContact(contact : Contact) : Contact
+    +deleteContact(id : int)
+}
+
+class ContactController {
+    -contactService : ContactService
+    +getAllContacts() : List<Contact>
+    +getContactById(id : int) : Contact
+    +addContact(contact : Contact) : Contact
+    +updateContact(id : int, contact : Contact) : Contact
+    +deleteContact(id : int)
+}
+
+ContactRepository ..|> Contact
+ContactService ..|> ContactRepository
+ContactController ..|> ContactService
+
+}
+
+@enduml
